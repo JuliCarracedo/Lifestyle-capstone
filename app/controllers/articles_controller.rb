@@ -3,23 +3,28 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @categories = Category.all
+    @featured_article = Article.find(
+      Vote.find_by_sql(
+        "SELECT article_id FROM votes 
+        GROUP BY article_id 
+        ORDER BY COUNT(user_id) 
+        DESC LIMIT 1"
+      ).first.try(:article_id)
+    )
+    @articles = Article.all - [@featured_article]
   end
 
-  # GET /articles/1 or /articles/1.json
   def show
   end
 
-  # GET /articles/new
   def new
     @article = Article.new
   end
 
-  # GET /articles/1/edit
   def edit
   end
 
-  # POST /articles or /articles.json
   def create
     @article = Article.new(article_params)
 

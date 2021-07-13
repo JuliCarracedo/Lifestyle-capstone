@@ -5,10 +5,15 @@
   <%= @category.name %>
 </p>
 
-<p>
-  <strong>Priority:</strong>
-  <%= @category.priority %>
-</p>
+<% @articles.each do |art| %>
+  <h3> <%= art.title %> </h3>
+  <p> <%= art.text %></p>
+  <p> <%= pluralize(art.votes.count, "vote") %></p>
+  <% if Vote.find_by(user_id: session[:current_user_id], article_id: art.id) %>
+     <%= link_to "unvote",destroy_vote_path(session[:current_user_id], art.id), method: :delete %>
+  <% else %>
+    <%= link_to "Vote", create_vote_path(session[:current_user_id], art.id), method: :post %>
+  <% end %>
+<% end %>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+

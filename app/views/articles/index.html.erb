@@ -3,9 +3,32 @@
     <% if session[:current_user_id] %>
       <%= link_to "Sign Out", kill_session_path , method: :delete %>
     <% end %>
+    <% if  @categories.any? %>
+      <% @categories.each do |category| %>
+        <%= link_to "#{category.name}", category_path(category)%>
+      <% end %>
+    <% end %>
   </nav>
 <h1>Articles</h1>
-
+<% if @featured_article %>
+  <div>
+    <h2><%= @featured_article.title %></h2>
+    <p><%= @featured_article.text %></p>
+    <p> <strong> <%=Category.find(@featured_article.category_id).name%> </strong> </p>
+  <div>
+<% end %>
+<% if @articles.any? %>
+  <%@articles.each do |article|%>
+    <div>
+      <h3><%= article.title %></h3>
+      <p><%= article.text %></p>
+      <p> <strong> <%=Category.find(article.category_id).name%> </strong> </p>
+    </div>
+  <% end %>
+<% else %>
+  <p>No articles avaliable</p>
+<% end %>
+<!--
 <table>
   <thead>
     <tr>
@@ -33,7 +56,7 @@
     <% end %>
   </tbody>
 </table>
-
+-->
 <br>
 
 <%= link_to 'New Article', new_article_path %>
