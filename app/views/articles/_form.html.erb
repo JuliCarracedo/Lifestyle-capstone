@@ -27,7 +27,7 @@
   </div>
 
   <div class="field">
-    <%= form.hidden_field :user_id, value: User.find(session[:current_user_id]).id%>
+    <%= form.hidden_field :user_id, value: session[:current_user_id]%>
   </div>
 
   <div class="field">
