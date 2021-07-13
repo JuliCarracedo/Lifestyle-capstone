@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def kill_session
     reset_session
     flash[:notice] = "Successfully logged out"
-    redirect_to user_login_path
+    redirect_to root_path
   end
 
   def new 

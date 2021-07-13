@@ -27,13 +27,12 @@
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%= form.hidden_field :user_id, value: User.find(session[:current_user_id]).id%>
   </div>
 
   <div class="field">
     <%= form.label :category_id %>
-    <%= form.text_field :category_id %>
+    <%= form.collection_select :category_id, Category.order(:priority), :id, :name%>
   </div>
 
   <div class="actions">

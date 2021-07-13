@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  root to: "users#login"
+  root to: "articles#index"
   resources :articles
   resources :categories
   resources :users
-
+  
   get "/login", to: "users#login", as: :user_login
   post "/create_session", to: "users#create_session", as: :create_session
   delete "/kill_session", to: "users#kill_session", as: :kill_session

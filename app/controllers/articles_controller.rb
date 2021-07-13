@@ -1,5 +1,6 @@
-class ArticlesController < ApplicationController
+class ArticlesController < ApplicationController 
   before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :authenticate_user, except: :index
 
   # GET /articles or /articles.json
   def index
@@ -12,13 +13,14 @@ class ArticlesController < ApplicationController
         DESC LIMIT 1"
       ).first.try(:article_id)
     )
-    @articles = Article.all - [@featured_article]
+    @articles = Article.order('created_at DESC') - [@featured_article]
   end
 
   def show
   end
 
   def new
+    @categories = Category.all
     @article = Article.new
   end
 
@@ -27,15 +29,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to @article, notice: "Article was successfully created." }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
+    if @article.save
+      flash[:notice] = "Article successfully created"
+      redirect_to category_path(params[category_id])
+    else
+      @categories = Category.all
+      render :new
     end
   end
 
