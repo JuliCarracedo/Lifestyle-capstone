@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :users
   get "/login", to: "users#login", as: :user_login
   post "/create_session", to: "users#create_session", as: :create_session
+  delete "/kill_session", to: "users#kill_session", as: :kill_session
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

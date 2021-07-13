@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show edit update destroy ]
-
+  skip_before_action :authenticate_user, only: [:login, :create_session]
   def login 
     @user = User.new
   end
@@ -16,13 +15,23 @@ class UsersController < ApplicationController
       redirect_to user_login_path
     end
   end
+
+  def kill_session
+    reset_session
+    flash[:notice] = "Successfully logged out"
+    redirect_to user_login_path
+  end
+
   def new 
     @user = User.new
   end
+
   def create
     @user = User.new(user_params)
     if @user.save 
       session[:current_user_id] = @user.id
+      flash[:notice] = "#{@user.name} Successfully logged in"
+      redirect_to articles_path
     else
       render :new
     end
