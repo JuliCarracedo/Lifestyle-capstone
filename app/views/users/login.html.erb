@@ -1,0 +1,12 @@
+<% if flash[:alert] %>
+    <div class="alert"><%= flash[:alert] %></div>
+<% end %>
+<h1>User login</h1>
+<%= form_tag action:'create_session' do %>
+  <div>
+    <%= label_tag :name %>
+    <%= text_field_tag :name %>
+  </div>
+    <%= submit_tag "Log In" %>
+<% end %>
+<%= link_to "Sign Up", new_user_path %>
