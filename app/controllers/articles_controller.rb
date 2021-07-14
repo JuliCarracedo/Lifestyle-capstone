@@ -5,6 +5,7 @@ class ArticlesController < ApplicationController
   # GET /articles or /articles.json
   def index
     @categories = Category.all
+    @categories_limited = @categories.slice(0,4)
     @featured_article = Article.find(
       Vote.find_by_sql(
         "SELECT article_id FROM votes 
@@ -13,7 +14,6 @@ class ArticlesController < ApplicationController
         DESC LIMIT 1"
       ).first.try(:article_id)
     )
-    @articles = Article.order('created_at DESC') - [@featured_article]
   end
 
   def show

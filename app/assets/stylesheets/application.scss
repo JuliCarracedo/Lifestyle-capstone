@@ -1,0 +1,95 @@
+@import "bootstrap";
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ .gray-link {
+    color: #777;
+    transition: 0.2s;
+    text-decoration: none;
+ }
+
+ .gray-link:hover {
+    color: #777;
+    text-decoration: underline; 
+ }
+
+ .orange-link {
+    color: rgb(255, 136, 0);
+    transition: 0.2s;
+ }
+
+ .orange-link:hover {
+    color: rgb(255, 136, 0);
+    text-decoration: underline; 
+}
+
+ .logo {
+     height: 50px;
+}
+
+.side-separator {
+    border-right-color: #777;
+    border-right-width: 1px;
+    border-right-style: solid;
+}
+
+nav {
+    height: 12vh;
+    border-bottom-style: solid;
+    border-bottom-color: #777;
+    border-bottom-width: 3px;
+    
+}
+
+footer {
+    font-size: 15px;
+    height: 8vh;
+    .logo {
+        height: 30px;
+        border-radius: 4px;
+    }
+}
+
+svg {
+    fill: rgb(255, 136, 0);
+    margin: 10px;
+    width: 25px; 
+}
+
+.nav-padding {
+    padding: 3px 1px 3px 1px;
+}
+
+.main-block, .secondary-block{
+    height: 40vh;
+}
+
+.bg-blue {
+    background-color: blue;
+}
+
+.bg-red {
+    background-color: red;
+}
+
+.bg-green {
+    background-color: green;
+}
+
+.bg-yellow {
+    background-color: yellow;
+}
+

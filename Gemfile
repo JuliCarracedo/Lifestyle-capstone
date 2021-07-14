@@ -34,6 +34,8 @@ gem 'gravatar_image_tag', '~> 1.2'
 
 gem 'hirb', '~> 0.7.3'
 
+gem 'jquery-rails'
+
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 group :development, :test do
