@@ -61,6 +61,10 @@ footer {
         height: 30px;
         border-radius: 4px;
     }
+    p,.footer-link {
+        height: 2vw;
+        margin-top: 1vw; 
+    }
 }
 
 svg {
@@ -77,19 +81,23 @@ svg {
     height: 40vh;
 }
 
-.bg-blue {
-    background-color: blue;
+.bg-tech {
+    background-image: url(asset_path('entertainment_bg.jpeg'));
+    background-size: cover;
 }
 
-.bg-red {
-    background-color: red;
+.bg-entertainment {
+    background-image: url(asset_path('daily_bg.jpeg'));
+    background-size: cover;
 }
 
-.bg-green {
-    background-color: green;
+.bg-daily {
+    background-image: url(asset_path('tech_bg.jpeg'));
+    background-size: cover;
 }
 
-.bg-yellow {
-    background-color: yellow;
+.bg-politics {
+    background-image: url(asset_path('politics_bg.jpeg'));
+    background-size: cover;
 }
 
