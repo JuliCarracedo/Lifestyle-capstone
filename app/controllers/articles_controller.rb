@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 
   # GET /articles or /articles.json
   def index
-    @categories = Category.all
+    @categories = Category.order(:priority)
     @categories_limited = @categories.slice(0,4)
     @featured_article = Article.find(
       Vote.find_by_sql(

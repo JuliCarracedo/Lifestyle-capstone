@@ -1,5 +1,6 @@
-<h1>New User</h1>
+<h1 class="mx-5 mt-5 orange-text">New User</h1>
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Back', users_path %>
+<%= link_to 'Back', user_login_path, class: "mx-5 form-link" %>
+<%= link_to 'Home', root_path, class: "mx-5 form-link" %>

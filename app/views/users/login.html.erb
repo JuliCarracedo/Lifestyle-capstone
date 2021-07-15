@@ -4,13 +4,16 @@
 <% if flash[:notice] %>
     <div class="notice"><%= flash[:notice] %></div>
 <% end %>
-<h1>User login</h1>
+<h1 class="orange-text mx-5 mt-5">User login</h1>
+
 <%= form_tag action:'create_session' do %>
+<div class="bg-orange">
   <div>
     <%= label_tag :name %>
     <%= text_field_tag :name %>
   </div>
     <%= submit_tag "Log In" %>
+</div>
 <% end %>
-<%= link_to "Sign Up", new_user_path %>
-<%= link_to "Home", root_path %>
+<%= link_to "Sign Up", new_user_path, class: "form-link mx-5"%>
+<%= link_to "Home", root_path, class: "form-link mx-5"%>

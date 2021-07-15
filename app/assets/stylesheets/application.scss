@@ -1,4 +1,5 @@
 @import "bootstrap";
+@import url('https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap');
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -15,6 +16,14 @@
  *= require_self
  */
 
+ @mixin roboto-font {
+    font-family: Roboto, Arial, sans-serif;
+ }
+
+ h1,h2,h3,h4 {
+    font-family: 'Otomanopee One', sans-serif;
+ }
+
  .gray-link {
     color: #777;
     transition: 0.2s;
@@ -26,9 +35,18 @@
     text-decoration: underline; 
  }
 
+ .category-title {
+     text-decoration: underline;
+     text-decoration-color: rgb(255, 230, 0);
+ }
+
  .orange-link {
     color: rgb(255, 136, 0);
     transition: 0.2s;
+ }
+
+ .orange-text {
+    color: rgb(255, 136, 0);
  }
 
  .orange-link:hover {
@@ -51,7 +69,7 @@ nav {
     border-bottom-style: solid;
     border-bottom-color: #777;
     border-bottom-width: 3px;
-    
+    font-weight: bold;
 }
 
 footer {
@@ -80,7 +98,6 @@ svg {
 .main-block, .secondary-block{
     height: 40vh;
 }
-
 .bg-tech {
     background-image: url(asset_path('entertainment_bg.jpeg'));
     background-size: cover;
@@ -99,5 +116,49 @@ svg {
 .bg-politics {
     background-image: url(asset_path('politics_bg.jpeg'));
     background-size: cover;
+}
+
+.main-block {
+    background-image: url(asset_path('main_bg_2.jpeg'));
+    background-size: cover;
+}
+
+a.inherit {
+    text-decoration-color: inherit;
+    color: inherit;
+}
+
+a.inherit:hover {
+    text-decoration-color: rgb(255, 136, 0);
+}
+
+.form-link {
+    color:rgb(255, 136, 0);
+    @include roboto-font;
+    font-size: 22px;
+}
+.form-link:hover {
+    color:rgb(255, 230, 0);
+    text-decoration: none;
+}
+.bg-orange {
+    background-color:rgb(255, 136, 0);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 10% 10px 10%;
+    @include roboto-font;
+    font-size: 22px;
+    align-items: center;
+    .field {
+        margin-top: 30px;
+    }
+    input {
+        margin-top: 30px;
+    }
+    label {
+        font-weight: bold;
+    }
 }
 
