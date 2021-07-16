@@ -164,11 +164,8 @@ a.inherit:hover {
     }
 }
 
-.article-base {
-    background-color: $project-orange;
-    @include roboto-font;
-    margin: 10px 10% 10px 10%;
-    border-radius: 10px;
-    padding: 20px;
-    font-size: 22px;
-}
+.article-title {
+    color: $project-orange;
+    text-decoration: underline;
+} 
+

@@ -28,29 +28,39 @@
     </div>
   </nav>
 
-<h1 class="orange-text mx-5 my-2"> <%= @category.name%></h1>
-
-
-<% @articles.each do |art| %>
-  <div class="article-base my-2 row">
-    <div class="col-4 container" >
-      <%= image_tag art.image, class: "w-100 h-100" %>
+<div class="container-fluid d-flex flex-wrap">
+  <% @articles.each do |art| %>
+    <div class="container d-flex flex-column w-25 p-0">
+    <% if art.id.odd? %>
+      <div class=" container p-0  h-50">
+        <%= image_tag art.image, class: "w-100 h-100" %>
+      </div>
+    <% end %>
+      <div div class="h-50 p-1">
+        <h4 class="article-title"> <%= art.title %> </h4>
+        <p><strong>By <%= art.user.name%></strong></p>
+        <p> <%= art.text_shortened %></p>
+        <p> <%= pluralize(art.votes.count, "vote") %></p>
+        <% if Vote.find_by(user_id: session[:current_user_id], article_id: art.id) %>
+          <%= link_to "unvote",destroy_vote_path(session[:current_user_id], art.id), method: :delete, class: "gray-link fw-bold" %>
+        <% else %>
+          <%unless art.user_id == session[:current_user_id]%>
+            <%= link_to "Vote", create_vote_path(session[:current_user_id], art.id), method: :post, class: "gray-link fw-bold"  %>
+          <% end%>
+        <% end %>
+      </div>
+      <% if art.id.even? %>
+      <div class=" container p-0 h-50">
+        <%= image_tag art.image, class: "w-100 h-100" %>
+      </div>
+    <% end %>
     </div>
-    <div div class="col">
-      <h3> <%= art.title %> </h3>
-      <p> <%= art.text %></p>
-      <p> <%= pluralize(art.votes.count, "vote") %></p>
-      <% if Vote.find_by(user_id: session[:current_user_id], article_id: art.id) %>
-        <%= link_to "unvote",destroy_vote_path(session[:current_user_id], art.id), method: :delete, class: "gray-link fw-bold" %>
-      <% else %>
-        <%unless art.user_id == session[:current_user_id]%>
-          <%= link_to "Vote", create_vote_path(session[:current_user_id], art.id), method: :post, class: "gray-link fw-bold"  %>
-        <% end%>
-      <% end %>
-    </div>
-  </div>
-<% end %>
-
+  <% end %>
+  <div class="h-0 w-25"></div>
+  <div class="h-0 w-25"></div>
+  <div class="h-0 w-25"></div>
+  <div class="h-0 w-25"></div>
+</div>
 
 <footer class="container-fluid d-flex justify-space-between row bg-dark m-0 fixed-bottom">
   <div class=" col-2 h-100">
