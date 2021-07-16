@@ -1,3 +1,6 @@
+  <% if flash[:notice]%>
+    <p id="notice"><%= notice %></p>
+  <% end %>
 <nav class="container-fluid navbar row d-flex justify-space-between align-items-center nav-padding sticky-top bg-light" >
     <div class =" col-3 "> 
       <a class="nav-link" href="<%root_path%>">
@@ -24,23 +27,30 @@
       <% end %>
     </div>
   </nav>
-  <% if flash[:notice]%>
-    <p id="notice"><%= notice %></p>
-  <% end %>
+
 <h1 class="orange-text mx-5 my-2"> <%= @category.name%></h1>
 
+
 <% @articles.each do |art| %>
-  <div class = "bg-orange my-2">
-    <h3> <%= art.title %> </h3>
-    <p> <%= art.text %></p>
-    <p> <%= pluralize(art.votes.count, "vote") %></p>
-    <% if Vote.find_by(user_id: session[:current_user_id], article_id: art.id) %>
-      <%= link_to "unvote",destroy_vote_path(session[:current_user_id], art.id), method: :delete, class: "gray-link fw-bold" %>
-    <% else %>
-      <%= link_to "Vote", create_vote_path(session[:current_user_id], art.id), method: :post, class: "gray-link fw-bold"  %>
-    <% end %>
+  <div class="article-base my-2 row">
+    <div class="col-4 container" >
+      <%= image_tag art.image, class: "w-100 h-100" %>
+    </div>
+    <div div class="col">
+      <h3> <%= art.title %> </h3>
+      <p> <%= art.text %></p>
+      <p> <%= pluralize(art.votes.count, "vote") %></p>
+      <% if Vote.find_by(user_id: session[:current_user_id], article_id: art.id) %>
+        <%= link_to "unvote",destroy_vote_path(session[:current_user_id], art.id), method: :delete, class: "gray-link fw-bold" %>
+      <% else %>
+        <%unless art.user_id == session[:current_user_id]%>
+          <%= link_to "Vote", create_vote_path(session[:current_user_id], art.id), method: :post, class: "gray-link fw-bold"  %>
+        <% end%>
+      <% end %>
+    </div>
   </div>
 <% end %>
+
 
 <footer class="container-fluid d-flex justify-space-between row bg-dark m-0 fixed-bottom">
   <div class=" col-2 h-100">

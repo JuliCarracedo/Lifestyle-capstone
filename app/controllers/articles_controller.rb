@@ -6,21 +6,27 @@ class ArticlesController < ApplicationController
   def index
     @categories = Category.order(:priority)
     @categories_limited = @categories.slice(0,4)
-    @featured_article = Article.find(
-      Vote.find_by_sql(
-        "SELECT article_id FROM votes 
-        GROUP BY article_id 
-        ORDER BY COUNT(user_id) 
-        DESC LIMIT 1"
-      ).first.try(:article_id)
-    )
+    most_voted_id = Vote.find_by_sql(
+      "SELECT article_id FROM votes 
+      GROUP BY article_id 
+      ORDER BY COUNT(user_id) 
+      DESC LIMIT 1"
+    ).first.try(:article_id)
+    @featured_article = if most_voted_id.nil?
+    
+    Article.first ||  Article.new(title: "Create your own article",
+       text: "People at Lifestyle want to know you better! Tell us your story and receive feedback from others!", 
+       category_id: 1) 
+    else
+    Article.find(most_voted_id)
+    end
   end
 
   def show
   end
 
   def new
-    @categories = Category.all
+    @categories = Category.order(:priority)
     @article = Article.new
   end
 
@@ -31,33 +37,13 @@ class ArticlesController < ApplicationController
     @article = Article.new(article_params)
     if @article.save
       flash[:notice] = "Article successfully created"
-      redirect_to category_path(params[category_id])
+      @article.update(image: select_image(@article.category_id))
+      redirect_to category_path(@article.category_id)
     else
-      @categories = Category.all
+      @categories = Category.order(:priority)
       render :new
     end
-  end
 
-  # PATCH/PUT /articles/1 or /articles/1.json
-  def update
-    respond_to do |format|
-      if @article.update(article_params)
-        format.html { redirect_to @article, notice: "Article was successfully updated." }
-        format.json { render :show, status: :ok, location: @article }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /articles/1 or /articles/1.json
-  def destroy
-    @article.destroy
-    respond_to do |format|
-      format.html { redirect_to articles_url, notice: "Article was successfully destroyed." }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -68,6 +54,23 @@ class ArticlesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.require(:article).permit(:title, :text, :image, :user_id, :category_id)
+      params.require(:article).permit(:title, :text, :user_id, :category_id)
     end
+    
+   def select_image (id)
+    case id # a_variable is the variable we want to compare
+    when 1   
+      "entertainment_bg.jpeg" 
+    when 2    
+      "tech_bg.jpeg"
+    when 3    
+      "daily_bg.jpeg"
+    when 4    
+      "politics_bg.jpeg"
+    when 5    
+      "arts_bg.jpeg"
+    when 6    
+      "sports_bg.jpeg"
+    end
+   end
 end

@@ -31,31 +31,18 @@
 <% if @featured_article %>
   <div class="container-fluid d-flex flex-column bg-danger main-block m-0 justify-content-end">
     <h2 class="orange-text mx-2"><%= @featured_article.title %></h2>
-    <p class="text-light mx-2"><%= @featured_article.text %></p>
+    <p class="text-light mx-2"><%= @featured_article.text_shortened %></p>
     <p class ="text-light mx-2"> <strong> <%=Category.find(@featured_article.category_id).name%> </strong> </p>
   </div>
 <% end %>
 
 
   <div class=" container-fluid row m-0 p-0">
-  
-    <div class="col d-flex align-content-center secondary-block bg-<%= @categories[0].name.downcase%>">
-      <<h3 class="text-light category-title my-5 mx-2"><%= link_to "#{@categories[0].name}", category_path(@categories[0]) , class: "inherit"%></h3>
-      
-    </div>
-    <div class="col d-flex align-content-center secondary-block bg-<%= @categories[1].name.downcase%>">
-      <h3 class="text-light category-title my-5 mx-2"><%= link_to "#{@categories[1].name}", category_path(@categories[1]) , class: "inherit"%></h3>
-      
-    </div>
-    <div class="col d-flex align-content-center secondary-block bg-<%= @categories[2].name.downcase%>">
-      <h3 class="text-light category-title my-5 mx-2"><%= link_to "#{@categories[2].name}", category_path(@categories[2]) , class: "inherit"%></h3>
-      
-    </div>
-    <div class="col d-flex align-content-center secondary-block bg-<%= @categories[3].name.downcase%>">
-     <h3 class="text-light category-title my-5 mx-2"><%= link_to "#{@categories[3].name}", category_path(@categories[3]), class: "inherit"%></h3>
-      
-    </div>
-
+    <% @categories_limited.each do |category|%>
+      <div class="col d-flex align-content-center secondary-block bg-<%= category.name.downcase%>">
+        <h3 class="text-light category-title my-5 mx-2"><%= link_to category.name, category_path(category) , class: "inherit"%></h3>
+      </div>
+    <% end %>
   </div>
 <footer class="container-fluid d-flex justify-space-between row bg-dark m-0">
   <div class=" col-2 h-100">

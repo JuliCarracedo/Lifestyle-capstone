@@ -3,6 +3,14 @@ class Article < ApplicationRecord
   belongs_to :category
   has_many :votes
   validates :title, presence: true, length:{maximum: 30}
-  validates :text, presence: true, length: {maximum: 200}
+  validates :text, presence: true, length: {maximum: 500}
 
+  def text_shortened
+    if text.length > 70
+      text[0..67] + "..."
+    else
+      text
+    end
+  end
+  
 end

@@ -20,6 +20,8 @@
     font-family: Roboto, Arial, sans-serif;
  }
 
+ $project-orange: rgb(255, 136, 0);
+
  h1,h2,h3,h4 {
     font-family: 'Otomanopee One', sans-serif;
  }
@@ -41,16 +43,16 @@
  }
 
  .orange-link {
-    color: rgb(255, 136, 0);
+    color:  $project-orange;
     transition: 0.2s;
  }
 
  .orange-text {
-    color: rgb(255, 136, 0);
+    color:  $project-orange;
  }
 
  .orange-link:hover {
-    color: rgb(255, 136, 0);
+    color:  $project-orange;
     text-decoration: underline; 
 }
 
@@ -86,7 +88,7 @@ footer {
 }
 
 svg {
-    fill: rgb(255, 136, 0);
+    fill:  $project-orange;
     margin: 10px;
     width: 25px; 
 }
@@ -129,11 +131,11 @@ a.inherit {
 }
 
 a.inherit:hover {
-    text-decoration-color: rgb(255, 136, 0);
+    text-decoration-color:  $project-orange;
 }
 
 .form-link {
-    color:rgb(255, 136, 0);
+    color: $project-orange;
     @include roboto-font;
     font-size: 22px;
 }
@@ -142,7 +144,7 @@ a.inherit:hover {
     text-decoration: none;
 }
 .bg-orange {
-    background-color:rgb(255, 136, 0);
+    background-color: $project-orange;
     border-radius: 10px;
     padding: 20px;
     display: flex;
@@ -162,3 +164,11 @@ a.inherit:hover {
     }
 }
 
+.article-base {
+    background-color: $project-orange;
+    @include roboto-font;
+    margin: 10px 10% 10px 10%;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 22px;
+}

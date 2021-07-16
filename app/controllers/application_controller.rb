@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
     before_action :authenticate_user, :make_categories
-
     def authenticate_user
         return true unless session[:current_user_id].nil? 
         flash[:alert] = "You need to be logged in to acces the website"
@@ -11,4 +10,5 @@ class ApplicationController < ActionController::Base
         return if Category.all.any?
         Category.run_template
     end
+
 end
