@@ -21,7 +21,7 @@
  }
 
  $project-orange: rgb(255, 136, 0);
-
+ $project-orange-faded: rgba(255, 136, 0,0.7);
  h1,h2,h3,h4 {
     font-family: 'Otomanopee One', sans-serif;
  }
@@ -144,8 +144,8 @@ a.inherit:hover {
     text-decoration: none;
 }
 .bg-orange {
-    background-color: $project-orange;
-    border-radius: 10px;
+    background-color: $project-orange-faded;
+    border-radius: 3px;
     padding: 20px;
     display: flex;
     flex-direction: column;

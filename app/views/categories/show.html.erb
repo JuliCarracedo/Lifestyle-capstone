@@ -40,6 +40,7 @@
         <h4 class="article-title"> <%= art.title %> </h4>
         <p><strong>By <%= art.user.name%></strong></p>
         <p> <%= art.text_shortened %></p>
+        <p><strong><%= art.category.name%></strong></p>
         <p> <%= pluralize(art.votes.count, "vote") %></p>
         <% if Vote.find_by(user_id: session[:current_user_id], article_id: art.id) %>
           <%= link_to "unvote",destroy_vote_path(session[:current_user_id], art.id), method: :delete, class: "gray-link fw-bold" %>
