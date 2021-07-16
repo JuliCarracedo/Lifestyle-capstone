@@ -1,34 +1,33 @@
 class UsersController < ApplicationController
   skip_before_action :authenticate_user
-  def login 
+  def login
     @user = User.new
   end
 
   def create_session
     @user = User.find_by(name: params[:name])
-    if 
-      session[:current_user_id] = @user&.id
+    if session[:current_user_id] == @user&.id
       flash[:notice] = "#{@user.name} Successfully logged in"
       redirect_to articles_path
     else
-      flash[:alert] = "User does not exist"
+      flash[:alert] = 'User does not exist'
       redirect_to user_login_path
     end
   end
 
   def kill_session
     reset_session
-    flash[:notice] = "Successfully logged out"
+    flash[:notice] = 'Successfully logged out'
     redirect_to root_path
   end
 
-  def new 
+  def new
     @user = User.new
   end
 
   def create
     @user = User.new(user_params)
-    if @user.save 
+    if @user.save
       session[:current_user_id] = @user.id
       flash[:notice] = "#{@user.name} Successfully logged in"
       redirect_to articles_path
@@ -38,7 +37,8 @@ class UsersController < ApplicationController
   end
 
   private
-    def user_params
-      params.require(:user).permit(:name)
-    end
+
+  def user_params
+    params.require(:user).permit(:name)
+  end
 end

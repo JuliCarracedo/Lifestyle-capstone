@@ -3,9 +3,7 @@ class VotesController < ApplicationController
 
   def create
     @vote = Vote.new(user_id: params[:user_id], article_id: params[:article_id])
-    if @vote.save
-      redirect_to category_path(Article.find(params[:article_id]).category_id)
-    end
+    redirect_to category_path(Article.find(params[:article_id]).category_id) if @vote.save
   end
 
   def destroy
