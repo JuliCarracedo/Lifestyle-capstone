@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'categorization/create/:article_id/:category_id', to: "categorization#create", as: :create_categorization
+  delete 'categorization/destroy/:article_id/:category_id', to: "categorization#destroy", as: :destroy_categorization
   root to: "articles#index"
   resources :articles
   resources :categories
