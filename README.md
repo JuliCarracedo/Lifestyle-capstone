@@ -8,7 +8,7 @@
 The website is designed as follows:
 - A Navbar with a series of links to all categories, the "company's" logo and a variable section to the outmost right.
     - Said section shows 'Sign Up' and 'Log In' options if not logged in and 'Sign Out' and 'Post' otherwise.
-- A footer with legal Corpiright content, links to Terms and Services and Privacy policy, another company logo and a set of social media links.
+- A footer with legal Corpyright content, links to Terms and Services and Privacy policy, another company logo and a set of social media links.
 
 Both elements are present in most views, where they would be needed.
 
