@@ -47,7 +47,7 @@ Currently, the many-to-many relationship between Article and Category models is 
 - Heroku 
 
 ## Live Demo
-Check out a heroku deployment of our project using [this link](still-taiga-55928.herokuapp.com).
+Check out a heroku deployment of our project using [this link](https://still-taiga-55928.herokuapp.com).
 
 
 ## Getting Started
