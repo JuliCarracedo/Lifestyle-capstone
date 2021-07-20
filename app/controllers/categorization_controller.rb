@@ -30,7 +30,7 @@ class CategorizationController < ApplicationController
     when 5
       'arts_bg.jpg'
     when 6
-      'sports_bg.jpeg'
+      'sports_bg.jpg'
     end
   end
 end
