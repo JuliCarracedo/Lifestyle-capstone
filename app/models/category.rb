@@ -11,4 +11,5 @@ class Category < ApplicationRecord
     create(name: 'Arts', priority: 6)
     create(name: 'Sports', priority: 5)
   end
+  
 end
