@@ -6,12 +6,7 @@ class ArticlesController < ApplicationController
   def index
     @categories = Category.order(:priority)
     @categories_limited = @categories.slice(0, 4)
-    most_voted_id = Vote.find_by_sql(
-      "SELECT article_id FROM votes
-      GROUP BY article_id
-      ORDER BY COUNT(user_id)
-      DESC LIMIT 1"
-    ).first.try(:article_id)
+    most_voted_id = Vote.most_voted_id
     @featured_article = if most_voted_id.nil?
 
                           Article.first || Article.new(title: 'Create your own article',

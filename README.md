@@ -62,14 +62,16 @@ To get a local copy up and running follow these simple example steps.
    - Move to the application's directory using `cd Lifestyle-capstone`
    
 ### Install
-- Run `bundle install` to install all Ruby gems required
-- Run `rails webpacker:install` to ensure Webpacker is properly set up
+- Run `bundle install` to install all Ruby gems required.
+- Run `rails webpacker:install` to ensure Webpacker is properly set up.
+- Run `rails db:create` to create the database.
+- Run `rails db:migrate` to set it up.
 ### Usage
-- Run `rails s` 
+- Run `rails s`.
 ### Run tests
 There are unit tests available for User, Article and Category models. Votes was excluded since it's behaviour is very limited. Categorization was excluded because it only is a through table relating articles to categories.
 
-Run the available unit tests with `rspec`
+Run the available unit tests with `rspec`.
 
 ## Author
 
@@ -90,7 +92,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- This project is based on [this template](https://www.behance.net/gallery/14554909/liFEsTlye-Mobile-version) designed by [Nelson Sakowa on Behance](https://www.behance.net/sakwadesignstudio)
+- This project is based on [this template](https://www.behance.net/gallery/14554909/liFEsTlye-Mobile-version) designed by [Nelson Sakowa on Behance](https://www.behance.net/sakwadesignstudio).
 
 ## 📝 License
 
