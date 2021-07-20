@@ -49,10 +49,10 @@
         </p>
         <p> <%= pluralize(art.votes.count, "vote") %></p>
         <% if Vote.find_by(user_id: session[:current_user_id], article_id: art.id) %>
-          <%= link_to "unvote",destroy_vote_path(session[:current_user_id], art.id), method: :delete, class: "gray-link fw-bold" %>
+          <%= link_to "unvote",destroy_vote_path(session[:current_user_id], art.id, @category.id), method: :delete, class: "gray-link fw-bold" %>
         <% else %>
           <%unless art.user_id == session[:current_user_id]%>
-            <%= link_to "Vote", create_vote_path(session[:current_user_id], art.id), method: :post, class: "gray-link fw-bold"  %>
+            <%= link_to "Vote", create_vote_path(session[:current_user_id], art.id,@category.id), method: :post, class: "gray-link fw-bold"  %>
           <% end%>
         <% end %>
       </div>
