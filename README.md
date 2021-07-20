@@ -3,7 +3,7 @@
 # Lifestyle Capstone
 
 > This project is my final test for Ruby on Rails module, where I'll build an articles website to show my skills with Ruby, its gems, databases and the MVC model. 
-![screenshot](./app_screenshot.png)
+![screenshot](./lib/assets/homepage.PNG)
 
 The website is designed as follows:
 - A Navbar with a series of links to all categories, the "company's" logo and a variable section to the outmost right.
@@ -48,7 +48,7 @@ Currently, the many-to-many relationship between Article and Category models is 
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](still-taiga-55928.herokuapp.com)
 
 
 ## Getting Started
