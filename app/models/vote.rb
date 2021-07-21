@@ -10,5 +10,4 @@ class Vote < ApplicationRecord
       DESC LIMIT 1"
     ).first.try(:article_id)
   end
-
 end
