@@ -31,7 +31,7 @@
 <div class="container-fluid d-flex flex-wrap">
   <% @articles.each do |art| %>
     <div class="container d-flex flex-column w-25 p-0">
-    <% if art.id.odd? %>
+    <% if (@articles.find_index{|el| el==art}).odd? %>
       <div class=" container p-0  h-50">
        <%= image_tag art.image, class: "w-100 h-100" %>
       </div>
@@ -49,14 +49,14 @@
         </p>
         <p> <%= pluralize(art.votes.count, "vote") %></p>
         <% if Vote.find_by(user_id: session[:current_user_id], article_id: art.id) %>
-          <%= link_to "unvote",destroy_vote_path(session[:current_user_id], art.id), method: :delete, class: "gray-link fw-bold" %>
+          <%= link_to "unvote",destroy_vote_path(session[:current_user_id], art.id, @category.id), method: :delete, class: "gray-link fw-bold" %>
         <% else %>
           <%unless art.user_id == session[:current_user_id]%>
-            <%= link_to "Vote", create_vote_path(session[:current_user_id], art.id), method: :post, class: "gray-link fw-bold"  %>
+            <%= link_to "Vote", create_vote_path(session[:current_user_id], art.id,@category.id), method: :post, class: "gray-link fw-bold"  %>
           <% end%>
         <% end %>
       </div>
-      <% if art.id.even? %>
+      <% if (@articles.find_index{|el| el==art}).even? %>
       <div class=" container p-0 h-50">
         <%= image_tag art.image, class: "w-100 h-100" %>
       </div>

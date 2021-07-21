@@ -8,7 +8,7 @@
 The website is designed as follows:
 - A Navbar with a series of links to all categories, the "company's" logo and a variable section to the outmost right.
     - Said section shows 'Sign Up' and 'Log In' options if not logged in and 'Sign Out' and 'Post' otherwise.
-- A footer with legal Corpiright content, links to Terms and Services and Privacy policy, another company logo and a set of social media links.
+- A footer with legal Corpyright content, links to Terms and Services and Privacy policy, another company logo and a set of social media links.
 
 Both elements are present in most views, where they would be needed.
 
@@ -47,12 +47,10 @@ Currently, the many-to-many relationship between Article and Category models is 
 - Heroku 
 
 ## Live Demo
-
-[Live Demo Link](still-taiga-55928.herokuapp.com)
+Check out a heroku deployment of our project using [this link](https://still-taiga-55928.herokuapp.com).
 
 
 ## Getting Started
-
 
 To get a local copy up and running follow these simple example steps.
 
@@ -64,14 +62,16 @@ To get a local copy up and running follow these simple example steps.
    - Move to the application's directory using `cd Lifestyle-capstone`
    
 ### Install
-- Run `bundle install` to install all Ruby gems required
-- Run `rails webpacker:install` to ensure Webpacker is properly set up
+- Run `bundle install` to install all Ruby gems required.
+- Run `rails webpacker:install` to ensure Webpacker is properly set up.
+- Run `rails db:create` to create the database.
+- Run `rails db:migrate` to set it up.
 ### Usage
-- Run `rails s` 
+- Run `rails s`.
 ### Run tests
 There are unit tests available for User, Article and Category models. Votes was excluded since it's behaviour is very limited. Categorization was excluded because it only is a through table relating articles to categories.
 
-Run the available unit tests with `rspec`
+Run the available unit tests with `rspec`.
 
 ## Author
 
@@ -92,7 +92,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- This project is based on [this template](https://www.behance.net/gallery/14554909/liFEsTlye-Mobile-version) designed by [Nelson Sakowa on Behance](https://www.behance.net/sakwadesignstudio)
+- This project is based on [this template](https://www.behance.net/gallery/14554909/liFEsTlye-Mobile-version) designed by [Nelson Sakowa on Behance](https://www.behance.net/sakwadesignstudio).
 
 ## 📝 License
 

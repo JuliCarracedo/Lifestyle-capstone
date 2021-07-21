@@ -28,9 +28,9 @@ class CategorizationController < ApplicationController
     when 4
       'politics_bg.jpeg'
     when 5
-      'arts_bg.jpeg'
+      'arts_bg.jpg'
     when 6
-      'sports_bg.jpeg'
+      'sports_bg.jpg'
     end
   end
 end
