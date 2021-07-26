@@ -33,7 +33,7 @@ Both elements are present in most views, where they would be needed.
     - On clicking this link, you are taken to the first category you picked for your article, and it will be displayed first.
 
 The next image displays the basic design of our database's Object Relational Model
-![screenshot](./lib/assets/ERD_capstone.png)
+![screenshot](./lib/assets/ERD_capstone.PNG)
 
 Currently, the many-to-many relationship between Article and Category models is driven by a has_many :through relationship using Categorization as a join table.
 
