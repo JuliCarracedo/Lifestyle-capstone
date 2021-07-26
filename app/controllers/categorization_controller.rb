@@ -22,7 +22,7 @@ class CategorizationController < ApplicationController
     when 1
       'entertainment_bg.jpeg'
     when 2
-      'tech_bg.jpeg'
+      'tech_bg.jpg'
     when 3
       'daily_bg.jpg'
     when 4
