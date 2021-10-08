@@ -1,3 +1,6 @@
+<% content_for :head do %>
+   <meta property="og:image" content=<%<%= image_tag "logo_size_invert.jpg" %>%>>
+<% end %>
 <% if flash[:notice] %>
   <p id="notice" class="container-fluid d-flex bg-success text-light justify-content-center"><%= notice %></p>
 <% end %>
