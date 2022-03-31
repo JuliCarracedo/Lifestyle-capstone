@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
-  has_many :articles
+  has_many :categorizations
+  has_many :articles, through: :categorizations
   validates :name, length: { in: 2...15 }, presence: true, uniqueness: true
 
   def self.run_template

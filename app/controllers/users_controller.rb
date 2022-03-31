@@ -6,12 +6,16 @@ class UsersController < ApplicationController
 
   def create_session
     @user = User.find_by(name: params[:name])
-    if session[:current_user_id] == @user&.id
-      flash[:notice] = "#{@user.name} Successfully logged in"
-      redirect_to articles_path
-    else
+    if params[:name].empty?
+      flash[:alert] = 'Insert a username'
+      redirect_to user_login_path
+    elsif !@user
       flash[:alert] = 'User does not exist'
       redirect_to user_login_path
+    else
+      session[:current_user_id] = @user.id
+      flash[:notice] = "#{@user.name} Successfully logged in"
+      redirect_to articles_path
     end
   end
 

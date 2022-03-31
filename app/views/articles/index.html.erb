@@ -1,3 +1,6 @@
+<% content_for :head do %>
+   <meta property="og:image" content=<%<%= image_tag "logo_size_invert.jpg" %>%>>
+<% end %>
 <% if flash[:notice] %>
   <p id="notice" class="container-fluid d-flex bg-success text-light justify-content-center"><%= notice %></p>
 <% end %>
@@ -32,7 +35,14 @@
   <div class="container-fluid d-flex flex-column bg-danger main-block m-0 justify-content-end">
     <h2 class="orange-text mx-2"><%= @featured_article.title %></h2>
     <p class="text-light mx-2"><%= @featured_article.text_shortened %></p>
-    <p class ="text-light mx-2"> <strong> <%=Category.find(@featured_article.category_id).name%> </strong> </p>
+      <p class ="text-light fs-6 mx-2">
+      <strong>
+      <% @featured_article.categories.each do |category| %> 
+        <%=category.name%>/
+        
+      <% end %>
+      </strong> 
+      </p>
   </div>
 <% end %>
 
