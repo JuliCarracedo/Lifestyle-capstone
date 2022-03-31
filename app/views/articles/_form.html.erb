@@ -25,11 +25,6 @@
     <%= form.hidden_field :user_id, value: session[:current_user_id], class: "roboto-font"%>
   </div>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.collection_select :category_id, Category.order(:priority), :id, :name%>
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
